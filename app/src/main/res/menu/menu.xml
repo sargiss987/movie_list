@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/getPopular"
+        android:title="@string/popular_movies"/>
+
+    <item
+        android:id="@+id/getUpcoming"
+        android:title="@string/upcoming_movies"/>
+
+</menu>
