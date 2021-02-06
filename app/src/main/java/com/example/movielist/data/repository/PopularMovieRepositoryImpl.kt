@@ -1,7 +1,7 @@
-package com.example.movielist.data.repository.popularmovie
+package com.example.movielist.data.repository
 
 import android.util.Log
-import com.example.movielist.data.model.popularmovie.PopularMovie
+import com.example.movielist.data.model.PopularMovie
 import com.example.movielist.data.repository.popularmovie.datasource.PopularMovieCacheDataSource
 import com.example.movielist.data.repository.popularmovie.datasource.PopularMovieLocalDataSource
 import com.example.movielist.data.repository.popularmovie.datasource.PopularMovieRemoteDataSource
@@ -63,7 +63,7 @@ class PopularMovieRepositoryImpl(
         return popularMovie
     }
 
-    suspend fun getPopularMoviesFromCache(): List<PopularMovie>{
+    private suspend fun getPopularMoviesFromCache(): List<PopularMovie>{
         lateinit var popularMovie: List<PopularMovie>
         try {
             popularMovie = popularMovieCacheDataSource.getPopularMoviesFromCache()

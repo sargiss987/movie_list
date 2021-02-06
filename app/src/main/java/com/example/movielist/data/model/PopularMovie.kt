@@ -1,4 +1,4 @@
-package com.example.movielist.data.model.popularmovie
+package com.example.movielist.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

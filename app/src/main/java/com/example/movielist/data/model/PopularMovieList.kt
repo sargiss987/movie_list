@@ -1,5 +1,6 @@
-package com.example.movielist.data.model.popularmovie
+package com.example.movielist.data.model
 
+import com.example.movielist.data.model.PopularMovie
 import com.google.gson.annotations.SerializedName
 
 data class PopularMovieList(

@@ -1,6 +1,6 @@
 package com.example.movielist.data.repository.popularmovie.datasource
 
-import com.example.movielist.data.model.popularmovie.PopularMovie
+import com.example.movielist.data.model.PopularMovie
 
 interface PopularMovieLocalDataSource {
 

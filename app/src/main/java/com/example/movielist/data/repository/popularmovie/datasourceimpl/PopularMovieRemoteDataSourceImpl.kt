@@ -1,7 +1,7 @@
 package com.example.movielist.data.repository.popularmovie.datasourceimpl
 
 import com.example.movielist.data.api.TMDBService
-import com.example.movielist.data.model.popularmovie.PopularMovieList
+import com.example.movielist.data.model.PopularMovieList
 import com.example.movielist.data.repository.popularmovie.datasource.PopularMovieRemoteDataSource
 import retrofit2.Response
 

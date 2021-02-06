@@ -1,7 +1,7 @@
 package com.example.movielist.data.repository.popularmovie.datasourceimpl
 
 import com.example.movielist.data.db.PopularMovieDao
-import com.example.movielist.data.model.popularmovie.PopularMovie
+import com.example.movielist.data.model.PopularMovie
 import com.example.movielist.data.repository.popularmovie.datasource.PopularMovieLocalDataSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

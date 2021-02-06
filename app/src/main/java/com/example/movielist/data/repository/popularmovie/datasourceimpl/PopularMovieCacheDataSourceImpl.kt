@@ -1,6 +1,6 @@
 package com.example.movielist.data.repository.popularmovie.datasourceimpl
 
-import com.example.movielist.data.model.popularmovie.PopularMovie
+import com.example.movielist.data.model.PopularMovie
 import com.example.movielist.data.repository.popularmovie.datasource.PopularMovieCacheDataSource
 
 class PopularMovieCacheDataSourceImpl() : PopularMovieCacheDataSource {
