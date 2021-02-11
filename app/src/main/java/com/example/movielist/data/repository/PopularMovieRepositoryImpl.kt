@@ -9,10 +9,10 @@ import com.example.movielist.domain.repository.PopularMovieRepository
 import java.lang.Exception
 
 class PopularMovieRepositoryImpl(
-    private val popularMovieRemoteDataSource: PopularMovieRemoteDataSource,
-    private val popularMovieLocalDataSource: PopularMovieLocalDataSource,
-    private val popularMovieCacheDataSource: PopularMovieCacheDataSource
-): PopularMovieRepository {
+        private val popularMovieRemoteDataSource: PopularMovieRemoteDataSource,
+        private val popularMovieLocalDataSource: PopularMovieLocalDataSource,
+        private val popularMovieCacheDataSource: PopularMovieCacheDataSource
+) : PopularMovieRepository {
 
     override suspend fun getPopularMovies(): List<PopularMovie> {
         return getPopularMoviesFromCache()
@@ -27,35 +27,37 @@ class PopularMovieRepositoryImpl(
         return newPopularMovieList
     }
 
-   private suspend fun getPopularMoviesFromAPI(): List<PopularMovie>{
-       lateinit var popularMovie: List<PopularMovie>
-       try {
-           val response = popularMovieRemoteDataSource.getPopularMovies()
-           val body = response.body()
-           if (body != null){
-               popularMovie = body.results
-           }
+    private suspend fun getPopularMoviesFromAPI(): List<PopularMovie> {
+        lateinit var popularMovie: List<PopularMovie>
+        try {
+            val response = popularMovieRemoteDataSource.getPopularMovies()
+            val body = response.body()
+            if (body != null) {
+                popularMovie = body.results
+            }
 
-       }catch (ex : Exception){
-           Log.i("myTag", ex.message.toString())
-       }
+        } catch (ex: Exception) {
 
-       return popularMovie
-   }
+            Log.i("myTag", ex.message.toString())
 
-    private suspend fun getPopularMoviesFromDB(): List<PopularMovie>{
+        }
+
+        return popularMovie
+    }
+
+    private suspend fun getPopularMoviesFromDB(): List<PopularMovie> {
         lateinit var popularMovie: List<PopularMovie>
 
         try {
             popularMovie = popularMovieLocalDataSource.getPopularMoviesFromDB()
-        }catch (ex : Exception){
+        } catch (ex: Exception) {
             Log.i("myTag", ex.message.toString())
         }
 
 
-        if (popularMovie.isNotEmpty()){
+        if (popularMovie.isNotEmpty()) {
             return popularMovie
-        }else{
+        } else {
             popularMovie = getPopularMoviesFromAPI()
             popularMovieLocalDataSource.savePopularMoviesToDB(popularMovie)
         }
@@ -63,17 +65,17 @@ class PopularMovieRepositoryImpl(
         return popularMovie
     }
 
-    private suspend fun getPopularMoviesFromCache(): List<PopularMovie>{
+    private suspend fun getPopularMoviesFromCache(): List<PopularMovie> {
         lateinit var popularMovie: List<PopularMovie>
         try {
             popularMovie = popularMovieCacheDataSource.getPopularMoviesFromCache()
-        }catch (ex : Exception){
+        } catch (ex: Exception) {
             Log.i("myTag", ex.message.toString())
         }
 
-        if (popularMovie.isNotEmpty()){
+        if (popularMovie.isNotEmpty()) {
             return popularMovie
-        }else{
+        } else {
             popularMovie = getPopularMoviesFromDB()
             popularMovieCacheDataSource.savePopularMoviesToCache(popularMovie)
         }
